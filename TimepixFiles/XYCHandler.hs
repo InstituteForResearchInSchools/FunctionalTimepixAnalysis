@@ -1,4 +1,4 @@
-module XYCHandler
+module TimepixFiles.XYCHandler
 ( formatLines
 ) where
 

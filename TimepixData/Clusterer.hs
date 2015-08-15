@@ -1,4 +1,4 @@
-module Clusterer
+module TimepixData.Clusterer
 ( queueCluster
 ) where
 
