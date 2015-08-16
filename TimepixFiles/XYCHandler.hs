@@ -31,4 +31,4 @@ formatLines (l:ls) = let
                          y' = read y
                          c' = read c
                      in   
-                         (x',y',c') : (formatLines ls)
+                         (x',y',c') : (formatLines ls)                                  
