@@ -10,13 +10,14 @@ After installing GHC, navigate to the folder on your Linux or Mac machine and ru
 
 	[computer-name]:FunctionalTimepixAnalysis [username]$ ghc --make FunctionalTimepixAnalysis.hs
 	
-	[computer-name]:FunctionalTimepixAnalysis [username]$ ./FunctionalClusterAnalysis [path-to-xyc-file]
-
+	[computer-name]:FunctionalTimepixAnalysis [username]$ ./FunctionalClusterAnalysis -x [path-to-xyc-file]
+	OR
+	[computer-name]:FunctionalTimepixAnalysis [username]$ ./FunctionalClusterAnalysis -m [path-to-pixel-matrix-file]
+	
 This will give no output as currently everything is calculated internally...
 
 ## To Do
 
-* Change command line interface to have an argument so that the file format can be flagged
 * Add error handling to whole toolkit
 * Prove correctness and performance of queueCluster
 * Decide what metrics need to be calculated from the clusters to allow for particle identification
