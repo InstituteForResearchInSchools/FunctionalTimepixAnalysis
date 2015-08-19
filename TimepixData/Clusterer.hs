@@ -20,8 +20,7 @@ module TimepixData.Clusterer
 --queueCluster works by taking a hit pixel list, each recursive call of queueCluster will
 --have constructed one cluster and removed every pixel in this cluster from the list of 
 --unclustered pixels which for its single argument. Inside there is a "let in" expression
---this has a function definition "mag" which just strips the negative sign of integers, 
---the canCluster function is a boolean value function which takes a pixel list (a cluster) 
+--this has canCluster; a boolean value function which takes a pixel list (a cluster) 
 --and a pixel it then checks to see if the pixel can cluster into this list, finally the 
 --makeCluster function takes a cluster, a queue of hit pixels (hence the name!) and then
 --another queue which non-clustered pixels get put in, it's output is a cluster list.
@@ -32,15 +31,13 @@ module TimepixData.Clusterer
 queueCluster :: [(Int,Int,Float)] -> [[(Int,Int,Float)]]
 queueCluster []     = []
 queueCluster (p:ps) = let
-                          mag :: Int -> Int
-                          mag x = if (x < 0) then x * (-1) else x
                           canCluster :: [(Int,Int,Float)] -> (Int,Int,Float) -> Bool
                           canCluster [] (x,y,c) = False
                           canCluster ((xc,yc,cc):cs) (x,y,c) 
                               | xdiff <= 1 && ydiff <= 1 = True
                               | otherwise                = (canCluster cs (x,y,c))
-                              where    xdiff = (mag (xc - x))
-                                       ydiff = (mag (yc - y))
+                              where    xdiff = abs $ xc - x
+                                       ydiff = abs $ yc - y
                           makeCluster :: [(Int,Int,Float)] -> [(Int,Int,Float)] -> [(Int,Int,Float)] -> [[(Int,Int,Float)]]  
                           makeCluster cs [] bs     = (cs:(queueCluster bs))
                           makeCluster cs (f:fs) bs = if (canCluster cs f)
