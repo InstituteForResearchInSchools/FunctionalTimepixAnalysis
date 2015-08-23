@@ -27,7 +27,7 @@ particleDefinitions = [
   (Alpha, [(2.5, 6.0), (25, 90), (0.75, 1.5), (1.05, 2.5) ] )
   ]
 
-
+classifyCluster :: [(Int, Int, Float)] -> ParticleType
 classifyCluster cluster
   | null classifications = Other
   | otherwise = head classifications

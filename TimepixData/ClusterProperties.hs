@@ -15,7 +15,7 @@ type Pixels = [(Double, Double)]
 
 -- Returns a tuple of all of a cluster's properties:
 -- (centroid, radius, numberPixels, density, squiggliness)
-clusterProperties :: [(Int, Int, Double)] -> ((Double, Double), Double, Int, Double, Double)
+clusterProperties :: [(Int, Int, Float)] -> ((Double, Double), Double, Int, Double, Double)
 clusterProperties cluster =
   let pixels = [ (fromIntegral x, fromIntegral y) | (x, y, c) <- cluster ] in
     (findCentroid pixels, findRadius pixels, findNumPixels pixels, findDensity pixels, findSquiggliness pixels)
